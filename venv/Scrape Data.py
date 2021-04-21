@@ -15,7 +15,7 @@ import csv
 import re
 import json
 
-print("hello")
+
 
 
 def search_for_hashtags(consumer_key, consumer_secret, access_token, access_token_secret, hashtag_phrase):
@@ -48,7 +48,7 @@ consumer_secret = 'Kb9clPlQjsICv6VU6AJPezSEA98qj13yFgzKUq2BSmAyZdk6if'
 access_token = '1382438548243161089-c7zmGHAu9XRwR1XUUPZ0aM9mLyXVpU'
 access_token_secret = 'A7zNllSD367Vd5EAo95wbmaiNBeT9ucrB3qg849Sl3fVC'
 
-hashtag_phrase = input('Hashtag Phrase ')
+hashtag_phrase = input('Stock Hashtag ')
 
 if __name__ == '__main__':
     search_for_hashtags(consumer_key, consumer_secret, access_token, access_token_secret, hashtag_phrase)
