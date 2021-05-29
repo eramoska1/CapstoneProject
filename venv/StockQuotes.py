@@ -17,6 +17,6 @@ def get_price(ticker):
     # getting historical data
     # last 5 days in 60 minute intervals
     # can also use start/end, yyyy-mm-dd string
-    hist = stock.history(period="5d",interval="60m")
+    hist = stock.history(period="1d",start = '2021-05-03',end= '2021-05-04',interval="1h")
     hist.to_csv(f'{ticker} prices.csv')
 get_price('GME')

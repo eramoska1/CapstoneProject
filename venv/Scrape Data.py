@@ -19,7 +19,7 @@ import json
 
 
 
-def search_for_hashtags(consumer_key, consumer_secret, access_token, access_token_secret, hashtag_phrase, date_since="2021-04-28", date_end="2021-04-29"):
+def search_for_hashtags(consumer_key, consumer_secret, access_token, access_token_secret, hashtag_phrase, date_since="2021-05-22", date_end="2021-05-23"):
     # create authentication for accessing Twitter
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
@@ -44,11 +44,11 @@ def search_for_hashtags(consumer_key, consumer_secret, access_token, access_toke
                 for tweet in tweepy.Cursor(api.search,q=hashtag_phrase + ' -filter:retweets', \
                                            lang="en",since= date_since,until=date_end, tweet_mode='extended').items(100000): # iterating over first 100,000 tweets
                     w.writerow([tweet.created_at,
-                                tweet.full_text.replace('\n', ' ').encode('utf-8'),                       # tweet text
+                                tweet.full_text.replace('\n', ' ').encode('utf-8').decode('utf-8'),                       # tweet text
                                 [e['text'] for e in tweet._json['entities']['hashtags']],                 # hashtags
                                 tweet.retweet_count,                                                      # retweet count
                                 tweet.created_at,                                                         # tweet created at
-                                tweet.user.screen_name.encode('utf-8'),                                   # username
+                                tweet.user.screen_name.encode('utf-8').decode('utf-8'),                                   # username
                                 tweet.user.followers_count],                                              # user followers
                                 )
                 break
